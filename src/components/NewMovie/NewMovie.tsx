@@ -5,17 +5,18 @@ import { Movie } from '../../types/Movie';
 type Props = {
   onAdd: (movie: Movie) => void;
 };
-
-export const NewMovie: React.FC<Props> = ({ onAdd }) => {
-  const [formKey, setFormKey] = useState(0);
-
-  const [values, setValues] = useState<Movie>({
+const clear = {
     title: '',
     description: '',
     imgUrl: '',
     imdbUrl: '',
     imdbId: '',
-  });
+};
+
+export const NewMovie: React.FC<Props> = ({ onAdd }) => {
+  const [formKey, setFormKey] = useState(0);
+
+  const [values, setValues] = useState<Movie>({ ...clear });
 
   const handleChange = (field: keyof Movie, value: string) => {
     setValues(prev => ({ ...prev, [field]: value }));
@@ -42,15 +43,9 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
       imdbId: values.imdbId.trim(),
     });
 
-    setValues({
-      title: '',
-      description: '',
-      imgUrl: '',
-      imdbUrl: '',
-      imdbId: '',
-    });
+    setValues({ ...clear });
 
-    setFormKey(prev => prev + 1); // 🔥 сброс touched в TextField
+    setFormKey(prev => prev + 1); 
   };
 
   return (
