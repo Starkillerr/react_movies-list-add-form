@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 import { TextField } from '../TextField';
-
-type Movie = {
-  title: string;
-  description: string;
-  imgUrl: string;
-  imdbUrl: string;
-  imdbId: string;
-};
+import { Movie } from '../../types/Movie';
 
 type Props = {
   onAdd: (movie: Movie) => void;

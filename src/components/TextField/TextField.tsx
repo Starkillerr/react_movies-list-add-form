@@ -14,8 +14,6 @@ type Props = {
   onChange?: (newValue: string) => void;
 
   onBlur?: () => void;
-
-  error?: boolean;
 };
 
 function getRandomDigits() {
